@@ -23,6 +23,7 @@ import (
 
 	"cloud.google.com/go/internal/testutil"
 	"cloud.google.com/go/internal/uid"
+	"google.golang.org/api/iterator"
 	computepb "google.golang.org/genproto/googleapis/cloud/compute/v1"
 	"google.golang.org/protobuf/proto"
 )
@@ -82,7 +83,7 @@ func TestCreateGetListInstance(t *testing.T) {
 	waitZonalRequest := &computepb.WaitZoneOperationRequest{
 		Project:   projectId,
 		Zone:      defaultZone,
-		Operation: insert.GetName(),
+		Operation: insert.Proto().GetName(),
 	}
 	_, err = zonesClient.Wait(ctx, waitZonalRequest)
 	if err != nil {
@@ -110,16 +111,17 @@ func TestCreateGetListInstance(t *testing.T) {
 		Zone:    defaultZone,
 	}
 
-	list, err := c.List(ctx, listRequest)
+	itr := c.List(ctx, listRequest)
 	if err != nil {
 		t.Error(err)
 	}
-	items := list.GetItems()
 	found := false
-	for _, element := range items {
+	element, err := itr.Next()
+	for err != iterator.Done {
 		if element.GetName() == name {
 			found = true
 		}
+		element, err = itr.Next()
 	}
 	if !found {
 		t.Error("Couldn't find the instance in list response")
@@ -198,7 +200,7 @@ func TestCreateGetRemoveSecurityPolicies(t *testing.T) {
 
 	waitGlobalRequest := &computepb.WaitGlobalOperationRequest{
 		Project:   projectId,
-		Operation: insert.GetName(),
+		Operation: insert.Proto().GetName(),
 	}
 	_, err = globalCLient.Wait(ctx, waitGlobalRequest)
 	if err != nil {
@@ -218,7 +220,7 @@ func TestCreateGetRemoveSecurityPolicies(t *testing.T) {
 	}
 	waitGlobalRequestRemove := &computepb.WaitGlobalOperationRequest{
 		Project:   projectId,
-		Operation: rule.GetName(),
+		Operation: rule.Proto().GetName(),
 	}
 	_, err = globalCLient.Wait(ctx, waitGlobalRequestRemove)
 	if err != nil {
