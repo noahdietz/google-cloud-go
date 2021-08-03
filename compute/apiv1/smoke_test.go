@@ -112,6 +112,9 @@ func TestCreateGetListInstance(t *testing.T) {
 	}
 
 	itr := c.List(ctx, listRequest)
+	if err != nil {
+		t.Error(err)
+	}
 	found := false
 	element, err := itr.Next()
 	for err == nil {
