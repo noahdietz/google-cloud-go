@@ -516,6 +516,28 @@ func TestIntegration_BucketLifecycle(t *testing.T) {
 	})
 }
 
+func TestIntegration_PublicBucketGRPC(t *testing.T) {
+	multiTransportTest(skipHTTP("gRPC implementation specific test"), t, func(t *testing.T, ctx context.Context, bucket string, _ string, client *Client) {
+
+		obj := client.Bucket("golang-grpc-test-ndietz-public").Object("file.rtf")
+		r, err := obj.NewReader(ctx)
+		if err != nil {
+			t.Fatal(err)
+		}
+		defer r.Close()
+
+		buf := make([]byte, 500)
+
+		n, err := r.Read(buf)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if n == 0 {
+			t.Fatal("expected to read something but got nothing")
+		}
+	}, option.WithoutAuthentication())
+}
+
 func TestIntegration_BucketUpdate(t *testing.T) {
 	ctx := context.Background()
 	client := testConfig(ctx, t)
