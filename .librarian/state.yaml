@@ -2,7 +2,7 @@ image: us-central1-docker.pkg.dev/cloud-sdk-librarian-prod/images-prod/librarian
 libraries:
   - id: compute
     version: 1.53.0
-    last_generated_commit: d4a34bf03d617723146fe3ae15192c4d93981a27
+    last_generated_commit: 796e0498a680b69e190cea73433eae522e74578a
     apis:
       - path: google/cloud/compute/v1
         service_config: compute_v1.yaml
