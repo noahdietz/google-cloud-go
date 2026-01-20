@@ -1,5 +1,11 @@
 # Changes
 
+## [1.54.0-preview.2](https://github.com/googleapis/google-cloud-go/releases/tag/compute%2Fv1.54.0-preview.2) (2026-01-20)
+
+### Features
+
+* generate libraries (#4) ([d18322a](https://github.com/googleapis/google-cloud-go/commit/d18322a9c017a3c6044c265af0e226a3c28c93a8))
+
 ## [1.53.0](https://github.com/googleapis/google-cloud-go/releases/tag/compute%2Fv1.53.0) (2026-01-08)
 
 ### Features
