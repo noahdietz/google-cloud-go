@@ -404,7 +404,7 @@ type internalInstancesClient interface {
 // InstancesClient is a client for interacting with Google Compute Engine API.
 // Methods, except Close, may be called concurrently. However, fields must not be modified concurrently with method calls.
 //
-// The Instances API.
+// The Instances API client. Hello, world!
 type InstancesClient struct {
 	// The internal transport-dependent client.
 	internalClient internalInstancesClient
@@ -798,7 +798,7 @@ type instancesRESTClient struct {
 
 // NewInstancesRESTClient creates a new instances rest client.
 //
-// The Instances API.
+// The Instances API client. Hello, world!
 func NewInstancesRESTClient(ctx context.Context, opts ...option.ClientOption) (*InstancesClient, error) {
 	clientOpts := append(defaultInstancesRESTClientOptions(), opts...)
 	httpClient, endpoint, err := httptransport.NewClient(ctx, clientOpts...)
