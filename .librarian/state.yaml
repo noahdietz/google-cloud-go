@@ -1,7 +1,7 @@
 image: us-central1-docker.pkg.dev/cloud-sdk-librarian-prod/images-prod/librarian-go@sha256:d2dee66d7c8c1d673fac26280164ea24015b79491b7f9d6ba369e6a98ab3420c
 libraries:
   - id: compute
-    version: 1.54.0-preview.1
+    version: 1.55.0-preview.1
     last_generated_commit: 796e0498a680b69e190cea73433eae522e74578a
     apis:
       - path: google/cloud/compute/v1
