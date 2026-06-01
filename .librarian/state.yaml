@@ -823,6 +823,16 @@ libraries:
       - compute/metadata/
       - internal/generated/snippets/compute/
     tag_format: '{id}/v{version}'
+  - id: compute-preview
+    version: 1.65.0-preview.1
+    last_generated_commit: ""
+    apis:
+      - path: google/cloud/compute/v1
+    source_roots:
+      - preview/internal/compute
+    preserve_regex: []
+    remove_regex: []
+    tag_format: compute/v{version}
   - id: compute/metadata
     version: 0.9.0
     last_generated_commit: ""

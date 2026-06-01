@@ -502,6 +502,10 @@ libraries:
       - path: google/cloud/commerce/consumer/procurement/v1
   - name: compute
     version: 1.64.0
+    preview:
+      version: 1.65.0-preview.1
+      apis:
+        - path: google/cloud/compute/v1
     apis:
       - path: google/cloud/compute/v1
         go:
