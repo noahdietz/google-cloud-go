@@ -4,6 +4,7 @@
   "include-component-in-tag": true,
   "separate-pull-requests": true,
   "tag-separator": "/",
+  "commit-search-depth": 20,
   "packages": {
     "preview/internal/compute": {
       "component": "compute",
